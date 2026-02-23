@@ -1,0 +1,29 @@
+"use client";
+
+import * as AccordionPrimitive from "@radix-ui/react-accordion";
+import { ChevronDown } from "lucide-react";
+import { cn } from "@/lib/utils";
+
+export const Accordion = AccordionPrimitive.Root;
+
+export function AccordionItem({ className, ...props }: AccordionPrimitive.AccordionItemProps) {
+  return <AccordionPrimitive.Item className={cn("rounded-2xl border border-navy/10 bg-white", className)} {...props} />;
+}
+
+export function AccordionTrigger({ className, children, ...props }: AccordionPrimitive.AccordionTriggerProps) {
+  return (
+    <AccordionPrimitive.Header>
+      <AccordionPrimitive.Trigger
+        className={cn("flex w-full items-center justify-between px-5 py-4 text-left text-sm font-semibold", className)}
+        {...props}
+      >
+        {children}
+        <ChevronDown className="h-4 w-4" />
+      </AccordionPrimitive.Trigger>
+    </AccordionPrimitive.Header>
+  );
+}
+
+export function AccordionContent({ className, ...props }: AccordionPrimitive.AccordionContentProps) {
+  return <AccordionPrimitive.Content className={cn("px-5 pb-4 text-sm text-navy/80", className)} {...props} />;
+}
